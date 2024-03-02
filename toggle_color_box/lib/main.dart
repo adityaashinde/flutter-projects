@@ -23,22 +23,39 @@ class ColorBox extends StatefulWidget {
 }
 
 class _ColorBoxState extends State<ColorBox> {
+  int countBox1 = 0;
+  int countBox2 = 0;
+
   bool box1Color = false;
   bool box2Color = false;
 
   Color setBox1Color() {
-    if (box1Color == false) {
+    if (countBox1 == 0) {
+      return Colors.grey;
+    } else if (countBox1 == 1) {
       return Colors.red;
-    } else {
+    } else if (countBox1 == 2) {
+      return Colors.blue;
+    } else if (countBox1 == 3) {
       return Colors.green;
+    } else {
+      countBox1 = 0;
+      return Colors.grey;
     }
   }
 
   Color setBox2Color() {
-    if (box2Color == false) {
+    if (countBox2 == 0) {
+      return Colors.grey;
+    } else if (countBox2 == 1) {
       return Colors.green;
-    } else {
+    } else if (countBox2 == 2) {
+      return Colors.blue;
+    } else if (countBox2 == 3) {
       return Colors.red;
+    } else {
+      countBox2 = 0;
+      return Colors.grey;
     }
   }
 
@@ -74,14 +91,13 @@ class _ColorBoxState extends State<ColorBox> {
               ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (box1Color == false) {
-                      box1Color = true;
-                    } else {
-                      box1Color = false;
-                    }
+                    countBox1++;
                   });
                 },
-                child: const Text("Color Box 1"),
+                child: const Text(
+                  "Color Box 1",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
               ),
             ],
           ),
@@ -104,14 +120,13 @@ class _ColorBoxState extends State<ColorBox> {
               ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    if (box2Color == false) {
-                      box2Color = true;
-                    } else {
-                      box2Color = false;
-                    }
+                    countBox2++;
                   });
                 },
-                child: const Text("Color Box 2"),
+                child: const Text(
+                  "Color Box 2",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
               ),
             ],
           ),
