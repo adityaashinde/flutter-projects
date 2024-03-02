@@ -37,6 +37,48 @@ class _ColorBoxState extends State<ColorBox> {
         backgroundColor: Colors.deepPurple.shade200,
         centerTitle: true,
       ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 140,
+                width: 140,
+                color: Colors.red,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text("Color Box 1"),
+              ),
+            ],
+          ),
+          const SizedBox(
+            width: 30,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 140,
+                width: 140,
+                color: Colors.green,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text("Color Box 2"),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
