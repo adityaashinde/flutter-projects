@@ -23,6 +23,25 @@ class ColorBox extends StatefulWidget {
 }
 
 class _ColorBoxState extends State<ColorBox> {
+  bool box1Color = false;
+  bool box2Color = false;
+
+  Color setBox1Color() {
+    if (box1Color == false) {
+      return Colors.red;
+    } else {
+      return Colors.green;
+    }
+  }
+
+  Color setBox2Color() {
+    if (box2Color == false) {
+      return Colors.green;
+    } else {
+      return Colors.red;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,19 +59,28 @@ class _ColorBoxState extends State<ColorBox> {
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Column 1
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 height: 140,
                 width: 140,
-                color: Colors.red,
+                color: setBox1Color(),
               ),
               const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    if (box1Color == false) {
+                      box1Color = true;
+                    } else {
+                      box1Color = false;
+                    }
+                  });
+                },
                 child: const Text("Color Box 1"),
               ),
             ],
@@ -60,19 +88,29 @@ class _ColorBoxState extends State<ColorBox> {
           const SizedBox(
             width: 30,
           ),
+
+          // Column 2
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 height: 140,
                 width: 140,
-                color: Colors.green,
+                color: setBox2Color(),
               ),
               const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    if (box2Color == false) {
+                      box2Color = true;
+                    } else {
+                      box2Color = false;
+                    }
+                  });
+                },
                 child: const Text("Color Box 2"),
               ),
             ],
