@@ -39,8 +39,8 @@ class _PortfolioState extends State<Portfolio> {
           color: Colors.amber,
         ),
       ),
-      child: Image.asset(
-        "assets/images/profile.jpg",
+      child: Image.network(
+        "https://avatars.githubusercontent.com/u/94387380?v=4",
         height: 200,
         width: 200,
       ),
@@ -68,8 +68,8 @@ class _PortfolioState extends State<Portfolio> {
           color: Colors.amber,
         ),
       ),
-      child: Image.asset(
-        "assets/images/STES.png",
+      child: Image.network(
+        "",
         height: 200,
         width: 200,
       ),
@@ -97,8 +97,8 @@ class _PortfolioState extends State<Portfolio> {
           color: Colors.amber,
         ),
       ),
-      child: Image.asset(
-        "assets/images/adobe.png",
+      child: Image.network(
+        "",
         height: 200,
         width: 200,
       ),
