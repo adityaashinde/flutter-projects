@@ -31,18 +31,18 @@ class _PortfolioState extends State<Portfolio> {
 
   Widget two() {
     return Container(
-      height: 200,
-      width: 200,
+      height: 150,
+      width: 150,
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
           color: Colors.amber,
         ),
       ),
-      child: Image.network(
-        "https://avatars.githubusercontent.com/u/94387380?v=4",
-        height: 200,
-        width: 200,
+      child: Image.asset(
+        "asset/images/profile.jpg",
+        height: 150,
+        width: 150,
       ),
     );
   }
@@ -60,18 +60,18 @@ class _PortfolioState extends State<Portfolio> {
 
   Widget four() {
     return Container(
-      height: 200,
-      width: 200,
+      height: 150,
+      width: 150,
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
           color: Colors.amber,
         ),
       ),
-      child: Image.network(
-        "",
-        height: 200,
-        width: 200,
+      child: Image.asset(
+        "asset/images/STES.png",
+        height: 150,
+        width: 150,
       ),
     );
   }
@@ -89,16 +89,16 @@ class _PortfolioState extends State<Portfolio> {
 
   Widget six() {
     return Container(
-      height: 200,
-      width: 200,
+      height: 150,
+      width: 150,
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
           color: Colors.amber,
         ),
       ),
-      child: Image.network(
-        "",
+      child: Image.asset(
+        "asset/images/adobe.png",
         height: 200,
         width: 200,
       ),
