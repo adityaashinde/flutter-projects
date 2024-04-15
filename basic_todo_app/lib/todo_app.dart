@@ -97,6 +97,28 @@ class _ToDoAppUIState extends State<ToDoAppUIDemo> {
                         ),
                       ],
                     ),
+                    const SizedBox(
+                      height: 14.0,
+                    ),
+
+                    // Padding
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            "10 April 2024",
+                            style: GoogleFonts.quicksand(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              color: const Color.fromRGBO(132, 132, 132, 1),
+                            ),
+                          ),
+                          const Spacer(),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
