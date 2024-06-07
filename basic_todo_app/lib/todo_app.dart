@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ToDoApp extends StatefulWidget {
@@ -64,7 +65,36 @@ class _ToDoAppState extends State {
                         const SizedBox(
                           width: 10,
                         ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Take Notes",
+                                style: GoogleFonts.quicksand(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15,
+                                  color: const Color.fromRGBO(0, 0, 0, 1),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Take notes of every app you create..",
+                                style: GoogleFonts.quicksand(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                  color: const Color.fromRGBO(84, 84, 84, 1),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
+                    ),
+                    const SizedBox(
+                      height: 14.0,
                     ),
                   ],
                 ),
