@@ -143,6 +143,15 @@ class _ToDoAppState extends State {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromRGBO(0, 139, 148, 1),
+        onPressed: () {},
+        child: const Icon(
+          size: 35,
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }
