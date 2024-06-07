@@ -1,35 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ToDoAppUIDemo extends StatefulWidget {
-  const ToDoAppUIDemo({super.key});
+class ToDoApp extends StatefulWidget {
+  const ToDoApp({super.key});
 
   @override
-  State<ToDoAppUIDemo> createState() => _ToDoAppUIState();
+  State createState() => _ToDoAppState();
 }
 
-class _ToDoAppUIState extends State<ToDoAppUIDemo> {
-  var listofColors = [
-    const Color.fromRGBO(250, 232, 232, 1),
-    const Color.fromRGBO(232, 237, 250, 1),
-    const Color.fromRGBO(250, 249, 232, 1),
-    const Color.fromRGBO(250, 232, 250, 1),
-  ];
+class _ToDoAppState extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(2, 167, 177, 1),
+        centerTitle: true,
         title: Text(
           "Todo App",
           style: GoogleFonts.quicksand(
-            fontSize: 22,
             fontWeight: FontWeight.w700,
+            fontSize: 25,
           ),
         ),
-        centerTitle: true,
-        backgroundColor: const Color.fromRGBO(2, 167, 177, 1),
       ),
       body: ListView.builder(
         itemCount: 10,
@@ -41,7 +33,7 @@ class _ToDoAppUIState extends State<ToDoAppUIDemo> {
             ),
             child: Container(
               decoration: BoxDecoration(
-                color: listofColors[index % listofColors.length],
+                ///  color: listofColors[],
                 boxShadow: const [
                   BoxShadow(
                     offset: Offset(0, 10),
@@ -55,6 +47,7 @@ class _ToDoAppUIState extends State<ToDoAppUIDemo> {
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
+                    // 1
                     Row(
                       children: [
                         Container(
@@ -64,60 +57,14 @@ class _ToDoAppUIState extends State<ToDoAppUIDemo> {
                             color: Colors.white,
                             shape: BoxShape.circle,
                           ),
-                          //       child: Image.asset("name"),
+                          child: Image.network(
+                            "https://media.istockphoto.com/id/1256489977/vector/tasks-check-checklist-blue-icon.jpg?s=612x612&w=0&k=20&c=dUctYWRSmMz1uiSFCCcJUKOyeoxVbvPuLugf8CLQiSo=",
+                          ),
                         ),
                         const SizedBox(
                           width: 10,
                         ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Take Notes",
-                                style: GoogleFonts.quicksand(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 15,
-                                  color: const Color.fromRGBO(0, 0, 0, 1),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Take notes of every app you create Take notes of every app you create",
-                                style: GoogleFonts.quicksand(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color.fromRGBO(84, 84, 84, 1),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                       ],
-                    ),
-                    const SizedBox(
-                      height: 14.0,
-                    ),
-
-                    // Padding
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            "10 April 2024",
-                            style: GoogleFonts.quicksand(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: const Color.fromRGBO(132, 132, 132, 1),
-                            ),
-                          ),
-                          const Spacer(),
-                        ],
-                      ),
                     ),
                   ],
                 ),
