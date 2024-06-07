@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ToDoApp extends StatefulWidget {
@@ -10,6 +9,12 @@ class ToDoApp extends StatefulWidget {
 }
 
 class _ToDoAppState extends State {
+  var listofColors = [
+    const Color.fromRGBO(250, 232, 232, 1),
+    const Color.fromRGBO(232, 237, 250, 1),
+    const Color.fromRGBO(250, 249, 232, 1),
+    const Color.fromRGBO(250, 232, 250, 1),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +39,7 @@ class _ToDoAppState extends State {
             ),
             child: Container(
               decoration: BoxDecoration(
-                ///  color: listofColors[],
+                color: listofColors[index % listofColors.length],
                 boxShadow: const [
                   BoxShadow(
                     offset: Offset(0, 10),
