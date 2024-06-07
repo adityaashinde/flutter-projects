@@ -96,6 +96,46 @@ class _ToDoAppState extends State {
                     const SizedBox(
                       height: 14.0,
                     ),
+
+                    // 2
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            "01 June 2024",
+                            style: GoogleFonts.quicksand(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              color: const Color.fromRGBO(132, 132, 132, 1),
+                            ),
+                          ),
+                          const Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              GestureDetector(
+                                onTap: () {},
+                                child: const Icon(
+                                  Icons.edit_outlined,
+                                  color: Color.fromRGBO(0, 139, 148, 1),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: const Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(0, 139, 148, 1),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
