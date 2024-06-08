@@ -9,6 +9,94 @@ class ToDoApp extends StatefulWidget {
 }
 
 class _ToDoAppState extends State {
+  void showBottomSheet() {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+        ),
+      ),
+      // isDismissible: true,
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+
+            /// TO avoid the keyboard overlap the screen
+            // bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Create Task",
+                style: GoogleFonts.quicksand(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 22,
+                ),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Column(
+                children: [
+                  Text(
+                    "Title",
+                    style: GoogleFonts.quicksand(
+                      color: const Color.fromRGBO(0, 139, 148, 1),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(0, 139, 148, 1),
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.purpleAccent),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    "Description",
+                    style: GoogleFonts.quicksand(
+                      color: const Color.fromRGBO(0, 139, 148, 1),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 3,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  /// list of colors
   var listofColors = [
     const Color.fromRGBO(250, 232, 232, 1),
     const Color.fromRGBO(232, 237, 250, 1),
@@ -150,7 +238,9 @@ class _ToDoAppState extends State {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromRGBO(0, 139, 148, 1),
-        onPressed: () {},
+        onPressed: () {
+          showBottomSheet();
+        },
         child: const Icon(
           size: 35,
           Icons.add,
