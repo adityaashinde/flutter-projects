@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:basic_todo_app/todo_app.dart';
+import 'package:basic_todo_app/view/todo_app.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: ToDoApp(),
+        body: ToDoAppUI(),
       ),
     );
   }

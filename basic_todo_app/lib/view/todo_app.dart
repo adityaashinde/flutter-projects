@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class ToDoApp extends StatefulWidget {
-  const ToDoApp({super.key});
+class ToDoAppUI extends StatefulWidget {
+  const ToDoAppUI({super.key});
 
   @override
   State createState() => _ToDoAppState();
