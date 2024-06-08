@@ -10,6 +10,11 @@ class ToDoApp extends StatefulWidget {
 }
 
 class _ToDoAppState extends State {
+  /// Text Editing Controllers
+  TextEditingController titleController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+
   void showBottomSheet() {
     showModalBottomSheet(
       isScrollControlled: true,
@@ -19,16 +24,16 @@ class _ToDoAppState extends State {
           topRight: Radius.circular(30.0),
         ),
       ),
-      // isDismissible: true,
+      isDismissible: true,
       context: context,
       builder: (context) {
         return Padding(
-          padding: const EdgeInsets.only(
+          padding: EdgeInsets.only(
             left: 20,
             right: 20,
 
             /// TO avoid the keyboard overlap the screen
-            // bottom: MediaQuery.of(context).viewInsets.bottom,
+            bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -60,6 +65,7 @@ class _ToDoAppState extends State {
                     height: 15,
                   ),
                   TextField(
+                    controller: titleController,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -90,6 +96,7 @@ class _ToDoAppState extends State {
                   ),
                   TextField(
                     maxLines: 4,
+                    controller: descriptionController,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -119,6 +126,7 @@ class _ToDoAppState extends State {
                     height: 3,
                   ),
                   TextField(
+                    controller: dateController,
                     readOnly: true,
                     decoration: InputDecoration(
                       suffixIcon: const Icon(Icons.date_range_rounded),
@@ -145,7 +153,7 @@ class _ToDoAppState extends State {
                           DateFormat.yMMMd().format(pickeddate!);
 
                       setState(() {
-                        formatedDate;
+                        dateController.text = formatedDate;
                       });
                     },
                   ),
@@ -168,7 +176,7 @@ class _ToDoAppState extends State {
                     backgroundColor: const Color.fromRGBO(0, 139, 148, 1),
                   ),
                   onPressed: () {
-                    // Navigator.of(context).pop();
+                    Navigator.of(context).pop();
                   },
                   child: Text(
                     "Submit",
@@ -197,6 +205,7 @@ class _ToDoAppState extends State {
     const Color.fromRGBO(250, 249, 232, 1),
     const Color.fromRGBO(250, 232, 250, 1),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
