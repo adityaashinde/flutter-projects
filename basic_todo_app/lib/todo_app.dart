@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class ToDoApp extends StatefulWidget {
   const ToDoApp({super.key});
@@ -87,7 +88,100 @@ class _ToDoAppState extends State {
                   const SizedBox(
                     height: 3,
                   ),
+                  TextField(
+                    maxLines: 4,
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(0, 139, 148, 1),
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.purpleAccent),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    "Date",
+                    style: GoogleFonts.quicksand(
+                      color: const Color.fromRGBO(0, 139, 148, 1),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 3,
+                  ),
+                  TextField(
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      suffixIcon: const Icon(Icons.date_range_rounded),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(0, 139, 148, 1),
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.purpleAccent),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onTap: () async {
+                      DateTime? pickeddate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2023),
+                        lastDate: DateTime(2028),
+                      );
+                      String formatedDate =
+                          DateFormat.yMMMd().format(pickeddate!);
+
+                      setState(() {
+                        formatedDate;
+                      });
+                    },
+                  ),
                 ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                height: 50,
+                width: 280,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    backgroundColor: const Color.fromRGBO(0, 139, 148, 1),
+                  ),
+                  onPressed: () {
+                    // Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    "Submit",
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
               ),
             ],
           ),
