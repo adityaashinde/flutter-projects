@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:basic_todo_app/model/todo_model_class.dart';
 
 class ToDoAppUI extends StatefulWidget {
   const ToDoAppUI({super.key});
@@ -15,7 +16,7 @@ class _ToDoAppState extends State {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController dateController = TextEditingController();
 
-  void showBottomSheet() {
+  void showBottomSheet(bool doedit, [TodoModelClass? todoModelObj]) {
     showModalBottomSheet(
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
@@ -198,6 +199,13 @@ class _ToDoAppState extends State {
     );
   }
 
+  // To clear all the Text Editing Controllers
+  void clearController() {
+    titleController.clear();
+    descriptionController.clear();
+    dateController.clear();
+  }
+
   /// list of colors
   var listofColors = [
     const Color.fromRGBO(250, 232, 232, 1),
@@ -205,6 +213,41 @@ class _ToDoAppState extends State {
     const Color.fromRGBO(250, 249, 232, 1),
     const Color.fromRGBO(250, 232, 250, 1),
   ];
+
+  // list of Todo's
+  List<TodoModelClass> todoList = [
+    TodoModelClass(
+      title: "Project Work",
+      description: "Meet the Group project partners",
+      date: "02 June 2024",
+    ),
+    TodoModelClass(
+      title: "DSA Problems",
+      description: "To solve the DSA problem sheet",
+      date: "06 June 2024",
+    ),
+    TodoModelClass(
+      title: "Take Notes",
+      description: "Take notes of every app you write",
+      date: "17 June 2024",
+    ),
+  ];
+
+  // Assign the text editing controllers with the text values and then open the bottom sheet
+  void editTask(TodoModelClass todoModelObj) {
+    titleController.text = todoModelObj.title;
+    descriptionController.text = todoModelObj.description;
+    dateController.text = todoModelObj.date;
+
+    showBottomSheet(true, todoModelObj);
+  }
+
+  // remove notes
+  void removeTasks(TodoModelClass todoModelObj) {
+    setState(() {
+      todoList.remove(todoModelObj);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -221,7 +264,7 @@ class _ToDoAppState extends State {
         ),
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: todoList.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(
@@ -266,7 +309,7 @@ class _ToDoAppState extends State {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Take Notes",
+                                todoList[index].title,
                                 style: GoogleFonts.quicksand(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 15,
@@ -277,7 +320,7 @@ class _ToDoAppState extends State {
                                 height: 10,
                               ),
                               Text(
-                                "Take notes of every app you create..",
+                                todoList[index].description,
                                 style: GoogleFonts.quicksand(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
@@ -299,7 +342,7 @@ class _ToDoAppState extends State {
                       child: Row(
                         children: [
                           Text(
-                            "01 June 2024",
+                            todoList[index].date,
                             style: GoogleFonts.quicksand(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
@@ -311,7 +354,9 @@ class _ToDoAppState extends State {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  editTask(todoList[index]);
+                                },
                                 child: const Icon(
                                   Icons.edit_outlined,
                                   color: Color.fromRGBO(0, 139, 148, 1),
@@ -321,7 +366,9 @@ class _ToDoAppState extends State {
                                 width: 10,
                               ),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  removeTasks(todoList[index]);
+                                },
                                 child: const Icon(
                                   Icons.delete_outline,
                                   color: Color.fromRGBO(0, 139, 148, 1),
@@ -342,7 +389,8 @@ class _ToDoAppState extends State {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromRGBO(0, 139, 148, 1),
         onPressed: () {
-          showBottomSheet();
+          clearController();
+          showBottomSheet(false);
         },
         child: const Icon(
           size: 35,
