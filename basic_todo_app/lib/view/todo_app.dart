@@ -177,6 +177,7 @@ class _ToDoAppState extends State {
                     backgroundColor: const Color.fromRGBO(0, 139, 148, 1),
                   ),
                   onPressed: () {
+                    doedit ? submit(doedit, todoModelObj) : submit(doedit);
                     Navigator.of(context).pop();
                   },
                   child: Text(
@@ -204,6 +205,33 @@ class _ToDoAppState extends State {
     titleController.clear();
     descriptionController.clear();
     dateController.clear();
+  }
+
+  // Submit button
+  void submit(bool doedit, [TodoModelClass? todoModelObj]) {
+    if (titleController.text.trim().isNotEmpty &&
+        descriptionController.text.trim().isNotEmpty &&
+        dateController.text.trim().isNotEmpty) {
+      if (!doedit) {
+        setState(() {
+          todoList.add(
+            TodoModelClass(
+              title: titleController.text.trim(),
+              description: descriptionController.text.trim(),
+              date: dateController.text.trim(),
+            ),
+          );
+        });
+      } else {
+        setState(() {
+          todoModelObj!.date = dateController.text.trim();
+          todoModelObj.title = titleController.text.trim();
+          todoModelObj.description = descriptionController.text.trim();
+        });
+      }
+    }
+
+    clearController();
   }
 
   /// list of colors
@@ -247,6 +275,14 @@ class _ToDoAppState extends State {
     setState(() {
       todoList.remove(todoModelObj);
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    titleController.dispose();
+    descriptionController.dispose();
+    dateController.dispose();
   }
 
   @override
